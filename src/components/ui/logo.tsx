@@ -7,26 +7,17 @@ const logoVariants = cva(
     {
         variants: {
             size: {
-                xs: "text-xs",
-                sm: "text-sm",
-                base: "text-base",
-                lg: "text-lg",
-                xl: "text-xl",
-                '2xl': "text-2xl",
-                '3xl': "text-3xl",
-            },
-            leading: {
-                none: "leading-none",
-                tight: "leading-tight",
-                normal: "leading-normal",
-                loose: "leading-loose",
-                '7': "leading-7",
-                '8': "leading-9",
+                xs: "text-xs leading-none",
+                sm: "text-sm leading-tight",
+                base: "text-base leading-normal",
+                lg: "text-lg leading-7",
+                xl: "text-xl leading-loose",
+                '2xl': "text-2xl leading-loose",
+                '3xl': "text-3xl leading-9",
             }
         },
         defaultVariants: {
             size: 'base',
-            leading: 'normal',
         }
     }
 )
@@ -37,11 +28,11 @@ type LogoProps = HTMLAttributes<HTMLSpanElement> &
 }
 
 const Logo = forwardRef<HTMLSpanElement, LogoProps>(
-    ({ className, size, leading, ...props }, ref) => {
+    ({ className, size, ...props }, ref) => {
         return (
             <span
                 ref={ref}
-                className={cn(logoVariants({ size, leading }), className)}
+                className={cn(logoVariants({ size }), className)}
                 {...props}
             >
         SHELL WE
