@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { HTMLAttributes, forwardRef } from 'react'
 
 const logoVariants = cva(
-    "left-0 top-0 absolute text-center justify-start text-blue-500 font-bold",
+    "text-blue-500 font-bold",
     {
         variants: {
             size: {
