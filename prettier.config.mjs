@@ -9,7 +9,8 @@ const prettierConfig = {
     "printWidth": 100,
     "endOfLine": "lf",
     "jsxSingleComma": false,
-    "quoteProps": "as-needed"
+    "quoteProps": "as-needed",
+    "plugins": ["prettier-plugin-tailwindcss"]
 };
 
 export default prettierConfig;
