@@ -3,16 +3,16 @@ import { cn } from '@/lib/utils'
 import {ButtonHTMLAttributes, forwardRef} from "react";
 
 const buttonVariant = cva(
-    "font-normal rounded-xl leading-none",
+    "font-normal rounded-xl flex gap-2 item-center",
     {
         variants:{
             color:{
-                primary: 'bg-blue-500 text-white hover:bg-blue-600',
-                secondary: 'bg-neutral-700 text-white hover:bg-neutral-700',
-                success: 'bg-green-500 text-white hover:bg-green-600',
-                warning: 'bg-amber-500 text-black hover:bg-amber-600',
-                error: 'bg-red-500 text-white hover:bg-red-600',
-                white: 'bg-white text-blue-900 hover:bg-neutral-50'
+                primary: 'bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-400 disabled:cursor-not-allowed disabled:pointer-events-none',
+                secondary: 'bg-neutral-700 text-white hover:bg-neutral-700 disabled:bg-neutral-500 disabled:cursor-not-allowed disabled:pointer-events-none',
+                success: 'bg-green-500 text-white hover:bg-green-600 disabled:bg-green-400 disabled:cursor-not-allowed disabled:pointer-events-none',
+                warning: 'bg-amber-500 text-black hover:bg-amber-600 disabled:bg-amber-400 disabled:cursor-not-allowed disabled:pointer-events-none',
+                error: 'bg-red-500 text-white hover:bg-red-600 disabled:bg-red-400 disabled:cursor-not-allowed disabled:pointer-events-none',
+                white: 'bg-white text-blue-900 hover:bg-neutral-50 disabled:bg-neutral-200 disabled:cursor-not-allowed disabled:pointer-events-none'
             },
             size:{
                 small: 'text-sm px-4 py-2',
@@ -21,13 +21,7 @@ const buttonVariant = cva(
             },
             icon:{
                 no: '',
-                left: 'flex flex-row-reverse items-center gap-2',
-                right: 'flex items-center gap-2',
-                only: 'flex items-center px-2.5 py-2.5 leading-none text-[0]'
-            },
-            state:{
-                default: '',
-                disabled: 'opacity-50 cursor-not-allowed pointer-events-none'
+                only: 'flex items-center px-2.5 py-2.5'
             },
             outlined:{
                 true:'',
@@ -39,61 +33,31 @@ const buttonVariant = cva(
             {
                 outlined: true,
                 color: 'primary',
-                class: 'bg-white text-blue-900 hover:bg-blue-50 border border-blue-500'
-            },
-            {
-                outlined: true,
-                color: 'primary',
-                state:'disabled',
-                class: 'bg-blue-100 text-blue-900 border border-blue-500'
+                class: 'bg-white text-blue-900 hover:bg-blue-50 border border-blue-500 disabled:bg-blue-100 disabled:cursor-not-allowed disabled:pointer-events-none'
             },
             // secondary 색상 outlined
             {
                 outlined: true,
                 color: 'secondary',
-                class: 'bg-white text-neutral-700 hover:bg-neutral-50 border border-neutral-700'
-            },
-            {
-                outlined: true,
-                color: 'secondary',
-                state:'disabled',
-                class: 'bg-neutral-100 text-neutral-700 border border-neutral-700'
+                class: 'bg-white text-neutral-700 hover:bg-neutral-50 border border-neutral-700 disabled:bg-neutral-100 disabled:cursor-not-allowed disabled:pointer-events-none'
             },
             // success 색상 outlined
             {
                 outlined: true,
                 color: 'success',
-                class: 'bg-white text-green-500 hover:bg-green-50 border border-green-500'
-            },
-            {
-                outlined: true,
-                color: 'success',
-                state:'disabled',
-                class: 'bg-green-100 text-green-500 border border-green-500'
+                class: 'bg-white text-green-500 hover:bg-green-50 border border-green-500 disabled:bg-green-100 disabled:cursor-not-allowed disabled:pointer-events-none'
             },
             // warning 색상 outlined
             {
                 outlined: true,
                 color: 'warning',
-                class: 'bg-white text-amber-500 hover:bg-amber-50 border border-amber-500'
-            },
-            {
-                outlined: true,
-                color: 'warning',
-                state:'disabled',
-                class: 'bg-amber-100 text-amber-500 border border-amber-500'
+                class: 'bg-white text-amber-500 hover:bg-amber-50 border border-amber-500 disabled:bg-amber-100 disabled:cursor-not-allowed disabled:pointer-events-none'
             },
             // error 색상 outlined
             {
                 outlined: true,
                 color: 'error',
-                class: 'bg-white text-red-500 hover:bg-red-50 border border-red-500'
-            },
-            {
-                outlined: true,
-                color: 'error',
-                state:'disabled',
-                class: 'bg-red-100 text-red-500 border border-red-500'
+                class: 'bg-white text-red-500 hover:bg-red-50 border border-red-500 disabled:bg-red-100 disabled:cursor-not-allowed disabled:pointer-events-none'
             }
 
         ]
@@ -103,11 +67,11 @@ const buttonVariant = cva(
 type ButtonProps = VariantProps<typeof buttonVariant> & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = forwardRef<HTMLButtonElement,ButtonProps>(
-    ({className,color,size,icon,state,outlined,...props},ref)=>{
+    ({className,color,size,icon,outlined,...props},ref)=>{
         return(
             <button
                 ref={ref}
-                className={cn(buttonVariant({color,size,icon,state,outlined}),className)}
+                className={cn(buttonVariant({color,size,icon,outlined}),className)}
                 {...props}
             >
             </button>
