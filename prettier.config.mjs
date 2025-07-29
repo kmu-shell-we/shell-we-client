@@ -10,7 +10,8 @@ const prettierConfig = {
     "endOfLine": "lf",
     "jsxSingleComma": false,
     "quoteProps": "as-needed",
-    "plugins": ["prettier-plugin-tailwindcss", "@trivago/pettier-plugin-sort-imports"],
+    tailwindFunctions: ['clsx', 'cva'],
+    plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
     "importOrder": [
         "^react$",
         "^next",
