@@ -23,9 +23,7 @@ const logoVariants = cva(
 )
 
 type LogoProps = HTMLAttributes<HTMLSpanElement> &
-    VariantProps<typeof logoVariants> & {
-    className?: string
-}
+    VariantProps<typeof logoVariants>
 
 const Logo = forwardRef<HTMLSpanElement, LogoProps>(
     ({ className, size, ...props }, ref) => {
