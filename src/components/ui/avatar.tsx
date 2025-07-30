@@ -1,55 +1,70 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import Image from "next/image"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import { forwardRef, useState } from 'react';
 
-const avatarVariants = cva(
-    "flex items-center justify-center overflow-hidden rounded-full bg-neutral-100 text-black font-medium",
-    {
-      variants: {
-        size: {
-          small: "w-6 h-6 text-xs leading-none",
-          default: "w-8 h-8 text-sm leading-tight",
-          large: "w-10 h-10 text-base leading-normal",
-        },
-      },
-      defaultVariants: {
-        size: "default",
-      },
-    }
-)
+import type { ImageProps } from 'next/dist/shared/lib/get-img-props';
+import Image from 'next/image';
 
-type AvatarProps = React.HTMLAttributes<HTMLDivElement> &
-    VariantProps<typeof avatarVariants> & {
-  src?: string
-  name?: string
-}
+import { type VariantProps, cva } from 'class-variance-authority';
 
-const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
-    ({ className, size, src, name, ...props }, ref) => {
-      const fallbackText = name?.[0]
+import { cn } from '@/lib/utils';
 
-      return (
-          <div ref={ref} className={cn(avatarVariants({ size }), className)} {...props}>
-            {src ? (
-                <Image
-                    src={src}
-                    alt="user image"
-                    fill
-                    sizes="100%"
-                    className="object-cover"
-                />
-            ) : fallbackText ? (
-                <span className="flex items-center justify-center w-full h-full">
-            {fallbackText}
+const avatarVariants = cva('overflow-hidden rounded-full bg-neutral-100', {
+  variants: {
+    size: {
+      small: 'h-6 w-6 text-xs leading-none',
+      default: 'h-8 w-8 text-sm leading-tight',
+      large: 'h-10 w-10 text-base leading-normal',
+    },
+  },
+  defaultVariants: {
+    size: 'default',
+  },
+});
+
+const sizeMap = {
+  small: 24,
+  default: 32,
+  large: 40,
+} as const;
+
+type AvatarProps = Omit<ImageProps, 'width' | 'height'> &
+  VariantProps<typeof avatarVariants> & {
+    fallback?: string;
+  };
+
+const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
+  ({ className, size, src, alt, fallback, ...props }, ref) => {
+    const [imageError, setImageError] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    const pixelSize = sizeMap[size || 'default'];
+    const showFallback = !src || imageError || !imageLoaded;
+
+    return (
+      <div ref={ref} className={cn(avatarVariants({ size }), className)}>
+        {src && !imageError && (
+          <Image
+            src={src}
+            alt={alt}
+            width={pixelSize}
+            height={pixelSize}
+            className="h-full w-full object-cover"
+            onError={() => setImageError(true)}
+            onLoad={() => setImageLoaded(true)}
+            {...props}
+          />
+        )}
+        {showFallback && fallback && (
+          <span className="flex h-full w-full items-center justify-center font-medium text-neutral-600">
+            {fallback}
           </span>
-            ) : null}
-          </div>
-      )
-    }
-)
+        )}
+      </div>
+    );
+  }
+);
 
-Avatar.displayName = "Avatar"
-export default Avatar
+Avatar.displayName = 'Avatar';
+
+export default Avatar;
