@@ -3,7 +3,7 @@ const prettierConfig = {
   singleQuote: true,
   tabWidth: 2,
   useTabs: false,
-  trailingComma: 'es5',
+  trailingComma: 'es6',
   bracketSpacing: true,
   arrowParens: 'always',
   printWidth: 100,
