@@ -20,7 +20,7 @@ const spinnerVariants = cva('animate-spin rounded-full border-neutral-200 border
 type SpinnerProps = HTMLAttributes<HTMLDivElement> & VariantProps<typeof spinnerVariants>;
 
 const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(({ className, size, ...props }, ref) => {
-  return <div ref={ref} className={cn(spinnerVariants({ size }))} {...props} />;
+  return <div ref={ref} className={cn(spinnerVariants({ size }), className)} {...props} />;
 });
 
 Spinner.displayName = 'Spinner';
