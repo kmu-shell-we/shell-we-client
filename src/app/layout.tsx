@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
+import Header from '@/components/layout/header';
+
 import '@/styles/globals.css';
 
 interface LayoutProps {
@@ -15,7 +17,10 @@ export const metadata: Metadata = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
