@@ -1,37 +1,47 @@
+import { ComponentType, SVGProps } from 'react';
+
 import { MoonIcon } from '@heroicons/react/20/solid';
 import { TicketIcon } from '@heroicons/react/20/solid';
 import { RocketLaunchIcon } from '@heroicons/react/20/solid';
 
+import { TypeColor } from '@/app/types/colors';
+
 import Badge from '@/components/ui/badge';
 
-type Mission_type = 'DAILY' | 'WEEKLY' | 'SPECIAL';
-type Props = {
-  missionType: Mission_type;
+type MissionType = 'DAILY' | 'WEEKLY' | 'SPECIAL';
+interface Props {
+  type: MissionType;
+}
+
+type MissionInfo = {
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  text: string;
+  color: TypeColor;
 };
 
-export default function MissionBadge({ missionType }: Props) {
-  const missions = {
-    DAILY: {
-      icon: <MoonIcon className="h-3 w-3" />,
-      text: '일간 미션',
-      color: 'white',
-    },
-    WEEKLY: {
-      icon: <TicketIcon className="h-3 w-3" />,
-      text: '주간 미션',
-      color: 'white',
-    },
-    SPECIAL: {
-      icon: <RocketLaunchIcon className="h-3 w-3" />,
-      text: '특별 미션',
-      color: 'success',
-    },
-  } as const;
+const missions: Record<MissionType, MissionInfo> = {
+  DAILY: {
+    icon: MoonIcon,
+    text: '일간 미션',
+    color: 'white',
+  },
+  WEEKLY: {
+    icon: TicketIcon,
+    text: '주간 미션',
+    color: 'white',
+  },
+  SPECIAL: {
+    icon: RocketLaunchIcon,
+    text: '특별 미션',
+    color: 'success',
+  },
+} as const;
 
-  const { icon, text, color } = missions[missionType];
+export default function MissionBadge({ type }: Props) {
+  const { icon: Icon, text, color } = missions[type];
   return (
-    <Badge size={'xs'} color={color}>
-      {icon}
+    <Badge size="xs" color={color}>
+      <Icon className="h-3 w-3" />
       {text}
     </Badge>
   );
