@@ -14,9 +14,9 @@ interface MissionProps {
 
 export default function Mission({ name, description, point, type }: MissionProps) {
   return (
-    <div className="flex w-fit flex-col gap-y-6 rounded-xl border border-neutral-300 bg-white px-4 py-6">
+    <div className="flex w-fit w-full flex-col gap-y-6 rounded-xl border border-neutral-300 bg-white px-4 py-6">
       <div className="flex flex-col gap-y-2">
-        <div className="flex w-[168px] justify-between">
+        <div className="flex justify-between">
           <MissionBadge type={type} />
           <div className="flex items-center text-sm font-semibold text-green-500">
             <span>+{point}</span>
