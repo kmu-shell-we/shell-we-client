@@ -10,11 +10,12 @@ interface MissionProps {
   description: string;
   point: number;
   type: MissionType;
+  clear: boolean;
 }
 
-export default function Mission({ name, description, point, type }: MissionProps) {
+export default function Mission({ name, description, point, type, clear }: MissionProps) {
   return (
-    <div className="flex w-fit w-full flex-col gap-y-6 rounded-xl border border-neutral-300 bg-white px-4 py-6">
+    <div className="flex w-full flex-col gap-y-6 rounded-xl border border-neutral-300 bg-white px-4 py-6">
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between">
           <MissionBadge type={type} />
@@ -24,14 +25,14 @@ export default function Mission({ name, description, point, type }: MissionProps
           </div>
         </div>
 
-        <div className="font-medium">
-          <span className="block">{name}</span>
-          <span className="block text-sm text-gray-600">{description}</span>
+        <div className="flex flex-col font-medium">
+          <span>{name}</span>
+          <span className="text-sm text-gray-600">{description}</span>
         </div>
       </div>
 
       <div className="flex justify-center">
-        <Button color="primary" size="small" outlined={false} className="flex">
+        <Button color="primary" size="small" outlined={false} disabled={clear} className="flex">
           <CheckIcon className="h-4 w-4" />
           <span className="font-normal">인증하기</span>
         </Button>
