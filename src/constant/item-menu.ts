@@ -1,9 +1,9 @@
-interface MenuItems {
+interface MenuItem {
   name: string;
   href: string;
 }
 
-export const menuItems: MenuItems[] = [
+export const menuItem: MenuItem[] = [
   {
     name: '홈',
     href: '/',
