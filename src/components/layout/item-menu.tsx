@@ -1,19 +1,13 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
+import { menuItems } from '@/constant/item-menu';
 import clsx from 'clsx';
-
-const menuItems = [
-  { name: '홈', href: '/' },
-  { name: '팀', href: '/team' },
-  { name: '갤러리', href: '/gallery' },
-  { name: '아이템', href: '/item' },
-];
 
 export default function ItemMenu() {
   const pathname = usePathname();
-  const router = useRouter();
 
   return (
     <nav className="flex items-center gap-2">
@@ -21,9 +15,9 @@ export default function ItemMenu() {
         const isActive = pathname === item.href;
 
         return (
-          <button
+          <Link
             key={item.name}
-            onClick={() => router.push(item.href)}
+            href={item.href}
             className={clsx(
               'relative px-[6px] text-lg font-normal',
               isActive
@@ -32,7 +26,7 @@ export default function ItemMenu() {
             )}
           >
             {item.name}
-          </button>
+          </Link>
         );
       })}
     </nav>
