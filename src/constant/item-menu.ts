@@ -3,7 +3,7 @@ interface MenuItem {
   href: string;
 }
 
-export const menuItem: MenuItem[] = [
+export const menuItems: MenuItem[] = [
   {
     name: '홈',
     href: '/',

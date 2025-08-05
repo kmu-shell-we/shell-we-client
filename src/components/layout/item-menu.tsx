@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { menuItem } from '@/constant/item-menu';
+import { menuItems } from '@/constant/item-menu';
 
 import { cn } from '@/lib/utils';
 
@@ -12,7 +12,7 @@ export default function ItemMenu() {
 
   return (
     <nav className="flex items-center gap-2">
-      {menuItem.map((item) => {
+      {menuItems.map((item) => {
         const isActive = pathname === item.href;
 
         return (
