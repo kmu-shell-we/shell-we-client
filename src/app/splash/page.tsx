@@ -17,9 +17,9 @@ export default function Page() {
     return () => clearTimeout(timeout);
   }, [router]);
   return (
-    <div className="flex h-[100dvh] w-screen flex-col items-center justify-end gap-[358px]">
-      <Logo size="3xl"></Logo>
-      <p className="mb-12 text-gray-600">WINK</p>
+    <div className="flex h-[100dvh] w-screen flex-col items-center justify-center gap-[358px]">
+      <Logo size="3xl" />
+      <p className="text-gray-600">WINK</p>
     </div>
   );
 }
