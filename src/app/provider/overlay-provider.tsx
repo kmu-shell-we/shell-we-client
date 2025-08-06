@@ -1,7 +1,13 @@
 'use client';
 
+import { ReactNode } from 'react';
+
 import { OverlayProvider } from 'overlay-kit';
 
-export default function ClientOverlayProvider({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: ReactNode;
+}
+
+export default function ClientOverlayProvider({ children }: Props) {
   return <OverlayProvider>{children}</OverlayProvider>;
 }

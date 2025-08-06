@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 import { CheckIcon, PhotoIcon, StarIcon } from '@heroicons/react/20/solid';
 
+import Modal from '@/components/modal/modal';
 import Button from '@/components/ui/button';
 
 interface ModalProps {
@@ -47,8 +48,8 @@ export default function MissionVerifyModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="flex w-[320] flex-col gap-y-4 rounded-xl bg-white px-6 py-6">
+    <Modal>
+      <div className="flex w-80 flex-col gap-y-4 rounded-xl bg-white px-6 py-6">
         <div className="flex flex-col">
           <span className="text-xl font-semibold">미션 인증</span>
           <span className="text-sm font-normal text-gray-500">
@@ -69,7 +70,7 @@ export default function MissionVerifyModal({
 
         {!imageUrl && (
           <div
-            className="flex flex-col items-center gap-y-2 rounded-lg border-3 border-dashed border-gray-300 py-8"
+            className="flex cursor-pointer flex-col items-center gap-y-2 rounded-lg border-3 border-dashed border-gray-300 py-8"
             onClick={handleClick}
           >
             <div className="flex h-[56] w-[56] items-center justify-center rounded-full bg-gray-100">
@@ -115,6 +116,6 @@ export default function MissionVerifyModal({
           </Button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }
