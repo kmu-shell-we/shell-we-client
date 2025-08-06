@@ -8,9 +8,9 @@ interface RankProp {
 
 export default function TeamRankCard({ rank, name, point }: RankProp) {
   return (
-    <div className="flex w-fit gap-4 rounded-xl border border-neutral-300 bg-white px-6 py-2.5 font-medium text-black">
+    <div className="flex w-full gap-4 rounded-xl border border-neutral-300 bg-white px-6 py-2.5 font-medium text-black">
       <span className="text-xl font-bold">{rank} </span>
-      <div className="flex items-center justify-between gap-6">
+      <div className="flex w-full items-center justify-between gap-6">
         {name}
         <div className="flex items-center gap-1 text-sm">
           <span>{point}</span>

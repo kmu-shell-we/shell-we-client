@@ -1,6 +1,10 @@
+'use client';
+
 import { CheckIcon, StarIcon } from '@heroicons/react/20/solid';
+import { overlay } from 'overlay-kit';
 
 import MissionBadge from '@/app/home/_component/mission_badge';
+import MissionVerifyModal from '@/app/home/_component/mission_verify_modal';
 import { MissionType } from '@/app/types/missions';
 
 import Button from '@/components/ui/button';
@@ -32,7 +36,24 @@ export default function Mission({ name, description, point, type, clear }: Missi
       </div>
 
       <div className="flex justify-center">
-        <Button color="primary" size="small" outlined={false} disabled={clear} className="flex">
+        <Button
+          color="primary"
+          size="small"
+          outlined={false}
+          disabled={clear}
+          className="flex"
+          onClick={() => {
+            overlay.open(({ isOpen, close }) => (
+              <MissionVerifyModal
+                open={isOpen}
+                onClose={close}
+                name="Test"
+                description="test"
+                point={1500}
+              />
+            ));
+          }}
+        >
           <CheckIcon className="h-4 w-4" />
           <span className="font-normal">인증하기</span>
         </Button>
