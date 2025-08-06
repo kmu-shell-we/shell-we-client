@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+// TODO: API 연결
 type User = {
   id: number;
   name: string;

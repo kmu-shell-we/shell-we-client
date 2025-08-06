@@ -28,9 +28,8 @@ const sizeMap = {
   large: 40,
 } as const;
 
-type AvatarProps = Omit<ImageProps, 'width' | 'height' | 'src'> &
+type AvatarProps = ImageProps &
   VariantProps<typeof avatarVariants> & {
-    src?: string;
     fallback?: string;
   };
 
