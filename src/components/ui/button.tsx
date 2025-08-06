@@ -5,7 +5,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariant = cva(
-  'flex cursor-pointer items-center gap-2 rounded-xl disabled:cursor-not-allowed',
+  'flex cursor-pointer items-center justify-center gap-2 rounded-xl disabled:cursor-not-allowed',
   {
     variants: {
       color: {
