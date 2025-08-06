@@ -2,26 +2,30 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
-import Header from '@/components/layout/header';
 import ClientOverlayProvider from '@/app/provider/overlay-provider';
 
+import Header from '@/components/layout/header';
+
 import '@/styles/globals.css';
+
+export const metadata: Metadata = {
+  title: 'SHELL WE',
+  description: '윙크 친해지길 바라',
+  manifest: '/manifest.json',
+};
 
 interface LayoutProps {
   children: ReactNode;
 }
-
-export const metadata: Metadata = {
-  title: 'SHELL WE',
-};
 
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ko">
       <body>
         <Header />
-        <main>{children}</main>
-        <ClientOverlayProvider>{children}</ClientOverlayProvider>
+        <ClientOverlayProvider>
+          <main>{children}</main>
+        </ClientOverlayProvider>
       </body>
     </html>
   );

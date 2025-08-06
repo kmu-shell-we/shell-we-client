@@ -10,11 +10,17 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
+    const isPWAInstalled =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (window.navigator as Navigator & { standalone?: boolean }).standalone;
+
     const timeout = setTimeout(() => {
-      {
-        /* TODO: On Board 페이지 구현 예정 */
+      if (isPWAInstalled) {
+        // TODO: On Board 페이지 구현 예정
+        router.replace('/on-board');
+      } else {
+        router.replace('/pwa-guide');
       }
-      router.push('/on-board');
     }, 2000);
 
     return () => clearTimeout(timeout);
