@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
+import ClientOverlayProvider from '@/app/provider/overlay-provider';
+
 import '@/styles/globals.css';
 
 interface LayoutProps {
@@ -15,7 +17,9 @@ export const metadata: Metadata = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <ClientOverlayProvider>{children}</ClientOverlayProvider>
+      </body>
     </html>
   );
 }
