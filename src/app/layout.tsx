@@ -10,8 +10,6 @@ import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'SHELL WE',
-  description: '윙크 친해지길 바라',
-  manifest: '/manifest.json',
 };
 
 interface LayoutProps {
