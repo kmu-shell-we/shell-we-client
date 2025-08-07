@@ -1,11 +1,11 @@
 'use client';
 
+import { MissionType } from '@/types/missions';
 import { CheckIcon, StarIcon } from '@heroicons/react/20/solid';
 import { overlay } from 'overlay-kit';
 
 import MissionBadge from '@/app/home/_component/mission_badge';
 import MissionVerifyModal from '@/app/home/_component/mission_verify_modal';
-import { MissionType } from '@/app/types/missions';
 
 import Button from '@/components/ui/button';
 
