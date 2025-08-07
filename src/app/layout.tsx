@@ -2,26 +2,30 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
-import Header from '@/components/layout/header';
 import ClientOverlayProvider from '@/app/provider/overlay-provider';
 
-import '@/styles/globals.css';
+import Header from '@/components/layout/header';
+import PwaRedirect from '@/components/system/pwa-redirect';
 
-interface LayoutProps {
-  children: ReactNode;
-}
+import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'SHELL WE',
 };
+
+interface LayoutProps {
+  children: ReactNode;
+}
 
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ko">
       <body>
         <Header />
-        <main>{children}</main>
-        <ClientOverlayProvider>{children}</ClientOverlayProvider>
+        <ClientOverlayProvider>
+          <PwaRedirect />
+          <main>{children}</main>
+        </ClientOverlayProvider>
       </body>
     </html>
   );

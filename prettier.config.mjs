@@ -8,7 +8,6 @@ const prettierConfig = {
   arrowParens: 'always',
   printWidth: 100,
   endOfLine: 'lf',
-  jsxSingleComma: false,
   quoteProps: 'as-needed',
   tailwindFunctions: ['clsx', 'cva'],
   plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],

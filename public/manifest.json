@@ -1,0 +1,17 @@
+{
+  "theme_color": "#3B82F6",
+  "background_color": "#3B82F6",
+  "display": "standalone",
+  "scope": ".",
+  "start_url": "/splash",
+  "name": "SHELL WE",
+  "short_name": "SHELL WE",
+  "description": "윙크 친해지길 바라",
+  "icons": [
+    {
+      "src": "./icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
