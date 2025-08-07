@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import ClientOverlayProvider from '@/app/provider/overlay-provider';
 
 import Header from '@/components/layout/header';
+import PwaRedirect from '@/components/system/pwa-redirect';
 
 import '@/styles/globals.css';
 
@@ -22,6 +23,7 @@ export default function Layout({ children }: LayoutProps) {
       <body>
         <Header />
         <ClientOverlayProvider>
+          <PwaRedirect />
           <main>{children}</main>
         </ClientOverlayProvider>
       </body>

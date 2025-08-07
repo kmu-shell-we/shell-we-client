@@ -10,21 +10,14 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    const isPWAInstalled =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      (window.navigator as Navigator & { standalone?: boolean }).standalone;
-
     const timeout = setTimeout(() => {
-      if (isPWAInstalled) {
-        // TODO: On Board 페이지 구현 예정
-        router.replace('/on-board');
-      } else {
-        router.replace('/pwa-guide');
-      }
+      // TODO: On Board 페이지 구현 예정
+      router.replace('/on-board');
     }, 2000);
 
     return () => clearTimeout(timeout);
   }, []);
+
   return (
     <div className="flex h-[100dvh] w-screen flex-col items-center justify-center gap-96">
       <Logo size="3xl" />
