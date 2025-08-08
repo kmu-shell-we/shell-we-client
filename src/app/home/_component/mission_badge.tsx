@@ -1,11 +1,10 @@
 import { ComponentType, SVGProps } from 'react';
 
+import { TypeColor } from '@/types/colors';
+import { MissionType } from '@/types/missions';
 import { MoonIcon } from '@heroicons/react/20/solid';
 import { TicketIcon } from '@heroicons/react/20/solid';
 import { RocketLaunchIcon } from '@heroicons/react/20/solid';
-
-import { TypeColor } from '@/app/types/colors';
-import { MissionType } from '@/app/types/missions';
 
 import Badge from '@/components/ui/badge';
 
