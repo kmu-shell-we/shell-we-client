@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps) {
         <Header />
         <ClientOverlayProvider>
           <PwaRedirect />
-          <main>{children}</main>
+          <main className="pt-8">{children}</main>
         </ClientOverlayProvider>
       </body>
     </html>
