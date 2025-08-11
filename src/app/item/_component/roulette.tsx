@@ -1,6 +1,7 @@
 import { ComponentType, SVGProps, useEffect, useRef, useState } from 'react';
 
 import { ArrowPathIcon, BeakerIcon, BoltIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { motion } from 'framer-motion';
 
 interface RouletteIcon {
   angle: number;
@@ -38,9 +39,12 @@ export default function Roulette() {
     <>
       <span className="leading-none text-rose-600">▼</span>
       <div className="relative aspect-square w-full" ref={containerRef}>
-        <div
-          className="h-full w-full rounded-full shadow transition-transform duration-[3000ms]"
-          style={{ transform: `rotate(${rotation}deg)` }}
+        <motion.div
+          className="h-full w-full rounded-full shadow"
+          animate={{ rotate: rotation }}
+          transition={{
+            duration: 3,
+          }}
         >
           <div className="h-full w-full rounded-full bg-[conic-gradient(#F0FDF4_0deg_90deg,#FEF2F2_90deg_180deg,#F5F5F5_180deg_270deg,#FFF8E8_270deg_360deg)]" />
 
@@ -54,7 +58,7 @@ export default function Roulette() {
               }}
             />
           ))}
-        </div>
+        </motion.div>
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-neutral-700">
