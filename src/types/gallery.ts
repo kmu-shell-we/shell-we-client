@@ -5,6 +5,7 @@ export type TeamPhoto = {
 };
 
 export type TeamBlock = {
+  id: string;
   teamName: string;
   photos: TeamPhoto[];
 };
