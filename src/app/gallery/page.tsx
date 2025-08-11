@@ -12,7 +12,7 @@ export default function GalleryPage() {
   return (
     <div className="flex flex-col items-start gap-6 self-stretch px-6">
       {teams.map((t) => (
-        <Link key={t.id} href={`/gallery-detail/${encodeURIComponent(t.id)}`}>
+        <Link key={t.id} href={`/gallery-detail/${t.id}`}>
           <GalleryItem teamName={t.teamName} photos={t.photos} />
         </Link>
       ))}
