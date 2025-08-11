@@ -2,20 +2,16 @@
 
 import Image from 'next/image';
 
+import { TeamPhoto } from '@/types/gallery';
 import { CalendarIcon } from '@heroicons/react/20/solid';
 
-type Props = {
-  imageUrl: string;
-  title: string;
-  description: string;
-  date: string;
-};
+type Props = Omit<TeamPhoto, 'id'>;
 
-export default function GalleryDetailItem({ imageUrl, title, description, date }: Props) {
+export default function GalleryDetailItem({ url, title, description, date }: Props) {
   return (
     <section className="flex flex-col items-start justify-center gap-2">
-      <div className="h-[162px] w-[162px] overflow-hidden rounded-xl">
-        <Image src={imageUrl} alt="미션 이미지" width={162} height={162} className="object-cover" />
+      <div className="h-[280px] w-[280px] overflow-hidden rounded-xl">
+        <Image src={url} alt={title} width={280} height={280} className="object-cover" />
       </div>
       <div className="flex flex-col items-start gap-1">
         <p className="text-base font-medium text-black">{title}</p>

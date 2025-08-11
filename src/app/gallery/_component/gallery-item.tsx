@@ -21,7 +21,7 @@ export default function GalleryItem({ teamName, photos }: Props) {
           >
             <Image
               src={item.url}
-              alt={item.alt ?? 'team photo'}
+              alt={item.title ?? 'team photo'}
               width={120}
               height={120}
               className="object-cover"
