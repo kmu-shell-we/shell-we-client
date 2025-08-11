@@ -13,6 +13,8 @@ import {
 import Modal from '@/components/modal/modal';
 import Button from '@/components/ui/button';
 
+import { cn } from '@/lib/utils';
+
 interface ItemModalProps {
   type: ItemType;
   open: boolean;
@@ -25,7 +27,7 @@ type ItemInfo = {
   description: string;
   bgColor: string;
   color: string;
-  element: ReactNode;
+  element?: ReactNode;
 };
 
 const items: Record<ItemType, ItemInfo> = {
@@ -35,7 +37,6 @@ const items: Record<ItemType, ItemInfo> = {
     description: '다음 미션 경험치 2배',
     bgColor: 'bg-green-50',
     color: 'text-green-500',
-    element: null,
   },
   reset: {
     icon: ArrowPathIcon,
@@ -74,7 +75,6 @@ const items: Record<ItemType, ItemInfo> = {
     description: '아무것도 얻지 못했습니다',
     bgColor: 'bg-gray-50',
     color: 'text-gray-500',
-    element: null,
   },
 };
 
@@ -85,8 +85,8 @@ export default function ItemResultModal({ type, open, onClose }: ItemModalProps)
   return (
     <Modal>
       <div className="flex w-75 flex-col items-center gap-y-4 rounded-xl bg-white px-6 py-6">
-        <div className={`flex items-center justify-center rounded-full ${bgColor} h-16 w-16`}>
-          <Icon className={`h-6 w-6 ${color}`} />
+        <div className={cn('flex h-16 w-16 items-center justify-center rounded-full', bgColor)}>
+          <Icon className={cn('h-6 w-6', color)} />
         </div>
 
         <div className="flex flex-col items-center">
@@ -94,7 +94,7 @@ export default function ItemResultModal({ type, open, onClose }: ItemModalProps)
           <span className="text-sm font-medium text-gray-600">{description}</span>
         </div>
 
-        {element}
+        {element && element}
 
         <Button color="white" size="small" outlined={true} onClick={onClose} className="w-full">
           확인
