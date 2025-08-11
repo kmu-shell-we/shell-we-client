@@ -10,7 +10,7 @@ export default function GalleryPage() {
   const teams: TeamBlock[] = [];
 
   return (
-    <div className="flex flex-col items-start gap-6 self-stretch px-6">
+    <div className="flex flex-col items-start gap-6 px-6">
       {teams.map((t) => (
         <Link key={t.id} href={`/gallery-detail/${t.id}`}>
           <GalleryItem teamName={t.teamName} photos={t.photos} />
