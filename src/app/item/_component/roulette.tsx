@@ -1,7 +1,11 @@
+'use client';
+
 import { ComponentType, SVGProps, useEffect, useRef, useState } from 'react';
 
 import { ArrowPathIcon, BeakerIcon, BoltIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { motion } from 'framer-motion';
+
+import { cn } from '@/lib/utils';
 
 interface RouletteIcon {
   angle: number;
@@ -23,10 +27,17 @@ export default function Roulette() {
 
   // 처음 화면 구성 할 때 지름 가져오기
   useEffect(() => {
-    if (containerRef.current) {
-      const { width } = containerRef.current.getBoundingClientRect();
-      setIconDistance(width * 0.3);
-    }
+    const handleResize = () => {
+      if (containerRef.current) {
+        const { width } = containerRef.current.getBoundingClientRect();
+        setIconDistance(width * 0.3);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   //룰렛 회전 시키기 기본으로 3바퀴는 돌도록 설정
@@ -36,7 +47,7 @@ export default function Roulette() {
   };
 
   return (
-    <>
+    <div className="flex max-w-md flex-col items-center">
       <span className="leading-none text-rose-600">▼</span>
       <div className="relative aspect-square w-full" ref={containerRef}>
         <motion.div
@@ -44,6 +55,7 @@ export default function Roulette() {
           animate={{ rotate: rotation }}
           transition={{
             duration: 3,
+            ease: 'easeInOut',
           }}
         >
           <div className="h-full w-full rounded-full bg-[conic-gradient(#F0FDF4_0deg_90deg,#FEF2F2_90deg_180deg,#F5F5F5_180deg_270deg,#FFF8E8_270deg_360deg)]" />
@@ -51,7 +63,10 @@ export default function Roulette() {
           {icons.map(({ angle, Icon, color }, i) => (
             <Icon
               key={i}
-              className={`absolute top-1/2 left-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 ${color}`}
+              className={cn(
+                'absolute top-1/2 left-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2',
+                color
+              )}
               style={{
                 // 위에 계산한 반지름의 60프로 정도로 룰렛 중앙으로 부터의 아이콘 위치 설정
                 transform: `rotate(${angle}deg) translate(${iconDistance}px) rotate(-${angle}deg)`,
@@ -68,6 +83,6 @@ export default function Roulette() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
