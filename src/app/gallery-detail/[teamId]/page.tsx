@@ -7,9 +7,13 @@ import { ArrowLongLeftIcon } from '@heroicons/react/20/solid';
 
 import GalleryDetailItem from '@/app/gallery-detail/_component/gallery-detail-item';
 
-export default function Page({ params }: { params: { teamId: string } }) {
-  const { teamId } = params;
+interface Props {
+  params: {
+    teamId: string;
+  };
+}
 
+export default function Page({ params: { teamId } }: Props) {
   const router = useRouter();
 
   return (
