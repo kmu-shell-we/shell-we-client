@@ -1,7 +1,9 @@
 export type TeamPhoto = {
   id: string;
   url: string;
-  alt?: string;
+  title: string;
+  description: string;
+  date: string;
 };
 
 export type TeamBlock = {
