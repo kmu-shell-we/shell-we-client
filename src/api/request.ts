@@ -39,4 +39,36 @@ export default class ApiRequest {
 
     return headers;
   }
+
+  public async get<T>(url: string, options?: Record<string, unknown>): Promise<T> {
+    return this.request(url, {
+      method: 'GET',
+      headers: this.generateHeader(),
+      ...options,
+    });
+  }
+
+  public async post<T>(url: string, body?: object): Promise<T> {
+    return this.request(url, {
+      method: 'POST',
+      body: this.generateBody(body),
+      headers: this.generateHeader(),
+    });
+  }
+
+  public async put<T>(url: string, body?: object): Promise<T> {
+    return this.request(url, {
+      method: 'PUT',
+      body: this.generateBody(body),
+      headers: this.generateHeader(),
+    });
+  }
+
+  public async delete<T>(url: string, body?: object): Promise<T> {
+    return this.request(url, {
+      method: 'DELETE',
+      body: this.generateBody(body),
+      headers: this.generateHeader(),
+    });
+  }
 }
