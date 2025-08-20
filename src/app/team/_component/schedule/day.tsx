@@ -5,10 +5,10 @@ import Hour from '@/app/team/_component/schedule/hour';
 type DayProps = {
   startAt: number;
   endAt: number;
-  counts: Record<string, number>;
+  counts?: Record<string, number>;
 };
 
-export default function Day({ startAt, endAt, counts }: DayProps) {
+export default function Day({ startAt, endAt, counts = {} }: DayProps) {
   const hours = endAt - startAt;
 
   return (

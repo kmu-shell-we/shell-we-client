@@ -4,7 +4,7 @@ import Cell from '@/app/team/_component/schedule/cell';
 
 type HourProps = {
   hour: number;
-  counts: Record<string, number>;
+  counts: Record<string, number>; // key는 "HH:MM", value는 count
 };
 
 export default function Hour({ hour, counts }: HourProps) {
