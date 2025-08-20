@@ -1,13 +1,13 @@
 'use client';
 
-import Day from '@/app/team/_component/schedule/day';
+import { CountsDays } from '@/types/schedule';
 
-export type CountsDay = Array<Record<string, number> | undefined>;
+import Day from '@/app/team/_component/schedule/day';
 
 type ScheduleProps = {
   startAt: number;
   endAt: number;
-  countsDays: CountsDay;
+  countsDays: CountsDays;
 };
 
 export default function Schedule({ startAt, endAt, countsDays }: ScheduleProps) {

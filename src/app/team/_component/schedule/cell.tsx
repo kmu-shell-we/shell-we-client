@@ -13,6 +13,6 @@ function cellCount(count: number) {
   return 'bg-purple-500';
 }
 
-export default function Cell({ count = 0 }: { count: number }) {
+export default function Cell({ count = 0 }: { count?: number }) {
   return <div className={cn('h-full w-full transition-colors', cellCount(count))}></div>;
 }

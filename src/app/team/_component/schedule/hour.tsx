@@ -1,13 +1,15 @@
 'use client';
 
+import { Counts } from '@/types/schedule';
+
 import Cell from '@/app/team/_component/schedule/cell';
 
 type HourProps = {
   hour: number;
-  counts: Record<string, number>; // key는 "HH:MM", value는 count
+  counts?: Counts;
 };
 
-export default function Hour({ hour, counts }: HourProps) {
+export default function Hour({ hour, counts = {} }: HourProps) {
   const h = String(hour).padStart(2, '0');
   const time1 = `${h}:00`;
   const time2 = `${h}:30`;

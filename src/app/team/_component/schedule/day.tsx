@@ -1,11 +1,13 @@
 'use client';
 
+import { Counts } from '@/types/schedule';
+
 import Hour from '@/app/team/_component/schedule/hour';
 
 type DayProps = {
   startAt: number;
   endAt: number;
-  counts?: Record<string, number>;
+  counts?: Counts;
 };
 
 export default function Day({ startAt, endAt, counts = {} }: DayProps) {
@@ -21,7 +23,7 @@ export default function Day({ startAt, endAt, counts = {} }: DayProps) {
           <div key={hour} className="w-full">
             <Hour hour={hour} counts={counts} />
             {!isLast && (
-              <div className="h-0 self-stretch outline outline-1 outline-offset-[-0.50px] outline-neutral-500" />
+              <div className="h-0 self-stretch outline outline-1 outline-offset-[-0.50px] outline-neutral-300" />
             )}
           </div>
         );
