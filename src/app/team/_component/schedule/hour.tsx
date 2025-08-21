@@ -19,7 +19,7 @@ export default function Hour({ hour, counts = {} }: HourProps) {
       <div className="h-5 self-stretch">
         <Cell count={counts[time1]} />
       </div>
-      <div className="h-0 outline outline-1 outline-offset-[-0.50px] outline-neutral-300" />
+      <div className="h-0 outline-1 outline-offset-[-0.50px] outline-neutral-300" />
       <div className="h-5 self-stretch">
         <Cell count={counts[time2]} />
       </div>

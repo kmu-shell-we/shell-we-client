@@ -14,7 +14,7 @@ export default function TeamPage() {
   const day = ['월', '화', '수', '목', '금'];
 
   return (
-    <div className="flex w-94 flex-col gap-y-6 bg-white px-6">
+    <div className="flex flex-col gap-y-6 bg-white px-6">
       {/*Todo: 남은 기간 바꾸기*/}
       <div className="flex justify-center">
         <RoundedBadge size="default" variant="white">
@@ -26,7 +26,7 @@ export default function TeamPage() {
       <div className="flex flex-col gap-y-4">
         <span className="text-xl font-semibold">팀원</span>
 
-        <div className="grid grid-cols-2 grid-rows-3 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <Profile name="김문기" avatar="" />
           <Profile name="김아리" avatar="" />
         </div>
@@ -38,7 +38,7 @@ export default function TeamPage() {
           <PlusIcon className="h-5 w-5" />
         </div>
 
-        <div className="flex flex-col items-stretch gap-3">
+        <div className="flex flex-col gap-3">
           <div className="flex flex-row pl-9">
             {day.map((w, i) => (
               <span

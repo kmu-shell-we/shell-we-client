@@ -9,7 +9,7 @@ import RoundedBadge from '@/components/ui/rounded-badge';
 
 export default function HomePage() {
   return (
-    <div className="flex w-94 flex-col gap-y-6 bg-white px-6">
+    <div className="flex flex-col gap-y-6 bg-white px-6">
       {/*Todo: 남은 기간 바꾸기*/}
       <div className="flex justify-center">
         <RoundedBadge size="default" variant="white">

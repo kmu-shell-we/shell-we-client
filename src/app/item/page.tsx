@@ -1,5 +1,10 @@
-import { ArrowPathIcon, BeakerIcon, ClockIcon, XMarkIcon } from '@heroicons/react/20/solid';
-import { BoltIcon } from '@heroicons/react/20/solid';
+import {
+  ArrowPathIcon,
+  BeakerIcon,
+  BoltIcon,
+  ClockIcon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
 
 import PossibilityCard from '@/app/item/_component/possibility_card';
 import Roulette from '@/app/item/_component/roulette';
@@ -9,7 +14,7 @@ import RoundedBadge from '@/components/ui/rounded-badge';
 
 export default function ItemPage() {
   return (
-    <div className="w-94 bg-white">
+    <div className="bg-white">
       <div className="flex w-full flex-col gap-y-6 bg-white px-6 pb-7">
         <ItemMenu />
         <div className="flex justify-center">
