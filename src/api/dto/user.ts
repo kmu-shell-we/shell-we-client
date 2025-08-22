@@ -12,7 +12,6 @@ export interface UserResponse {
 
 export interface SimpleUserResponse {
   id: string;
-  studentId: string;
   name: string;
   avatar: string;
 }

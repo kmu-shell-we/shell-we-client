@@ -21,6 +21,7 @@ export interface MissionResponse {
   id: string;
   type: MissionType;
   name: string;
+  reward: number;
   description: string;
 }
 
