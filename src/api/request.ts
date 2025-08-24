@@ -1,12 +1,12 @@
 import ApiResponse from '@/api/dto/common';
 
 export default class ApiRequest {
-  private readonly baseUrl?: string;
+  private readonly baseUrl: string;
   private token?: string;
 
   public constructor() {
     this.baseUrl =
-      typeof window === 'undefined' ? process.env['NEXT_PUBLIC_API_URL '] : window.origin + '/api';
+      typeof window === 'undefined' ? process.env['NEXT_PUBLIC_API_URL']! : window.origin + '/api';
   }
 
   private async request<T>(url: string, options: RequestInit): Promise<T> {

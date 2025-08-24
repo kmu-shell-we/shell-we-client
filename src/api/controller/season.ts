@@ -10,7 +10,7 @@ export default class Season {
   constructor(private readonly request: ApiRequest) {}
 
   public async getCurrentSeason(): Promise<SeasonResponse> {
-    return this.request.get('seasons/current');
+    return this.request.get('/seasons/current');
   }
 
   public async getSeasonsList(): Promise<SeasonListResponse> {

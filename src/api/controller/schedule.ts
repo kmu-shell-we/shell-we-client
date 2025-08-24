@@ -20,7 +20,9 @@ export default class Schedule {
     const params = new URLSearchParams();
 
     if (userIds !== undefined && userIds.length > 0) {
-      params.append('users', userIds.join(','));
+      userIds.forEach((id) => {
+        params.append('users', id);
+      });
     }
     return this.request.get(`/seasons/${seasonId}/teams/${teamId}/schedules?${params}`);
   }
