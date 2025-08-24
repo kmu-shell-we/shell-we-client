@@ -1,15 +1,12 @@
 import { create } from 'zustand';
 
+import { UserResponse } from '@/api/dto/user';
+
 // TODO: API 연결
-type User = {
-  id: number;
-  name: string;
-  profileUrl: string | null;
-};
 
 interface UserStore {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: UserResponse | null;
+  setUser: (user: UserResponse | null) => void;
 }
 
 export const useUserStore = create<UserStore>((set) => ({
