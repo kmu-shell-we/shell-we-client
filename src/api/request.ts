@@ -1,4 +1,7 @@
 import ApiResponse from '@/api/dto/common';
+import { UserResponse } from '@/api/dto/user';
+
+import { useUserStore } from '@/store/user';
 
 export default class ApiRequest {
   private readonly baseUrl: string;
@@ -70,5 +73,21 @@ export default class ApiRequest {
       body: this.generateBody(body),
       headers: this.generateHeader(),
     });
+  }
+
+  public async setToken(token: string) {
+    this.token = token;
+
+    localStorage.setItem('token', token);
+
+    const res = await this.get<UserResponse>('users/me');
+
+    if (!res) {
+      localStorage.removeItem('token');
+      this.token = undefined;
+      useUserStore.getState().setUser(null);
+    } else {
+      useUserStore.getState().setUser(res);
+    }
   }
 }

@@ -2,11 +2,10 @@ import { Role } from '@/api/schema/user';
 
 export interface UserResponse {
   id: string;
+  createdAt: string;
   studentId: string;
   name: string;
-  email: string;
   avatar: string;
-  phone: string;
   role: Role;
 }
 
