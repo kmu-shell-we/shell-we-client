@@ -47,7 +47,7 @@ export default function TeamPage(props: Props) {
       setTeamInfo(response.team);
       setTeamUsers(response.users);
     });
-  }, []);
+  }, [user, seasonId]);
 
   const handleOpen = () => {
     overlay.open(({ isOpen, close }) => <ScheduleUploadModal open={isOpen} onClose={close} />);
