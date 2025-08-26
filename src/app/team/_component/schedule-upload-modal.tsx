@@ -27,7 +27,7 @@ export default function ScheduleUploadModal({ open, onClose }: ModalProps) {
 
   return (
     <Modal>
-      <div className="relative flex flex-col items-start justify-center gap-6 px-6 py-6">
+      <div className="relative flex w-82 flex-col items-start justify-center gap-6 rounded-xl bg-white px-6 py-6">
         <button onClick={onClose} className="absolute top-6 right-6 text-gray-500">
           <XMarkIcon className="h-6 w-6" />
         </button>
@@ -57,7 +57,7 @@ export default function ScheduleUploadModal({ open, onClose }: ModalProps) {
           </div>
         </label>
 
-        <div className="flex flex-row items-center justify-center gap-2">
+        <div className="flex w-full flex-row items-center justify-center gap-2">
           <Button color="white" size="small" outlined={true} className="flex-1" onClick={onClose}>
             닫기
           </Button>
