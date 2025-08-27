@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
+import { Toaster } from 'sonner';
+
 import ClientOverlayProvider from '@/app/provider/overlay-provider';
 
 import Header from '@/components/layout/header';
@@ -25,6 +27,15 @@ export default function Layout({ children }: LayoutProps) {
           {/*<PwaRedirect />*/}
           <main className="pt-8">{children}</main>
         </ClientOverlayProvider>
+
+        <Toaster
+          className="font-sans"
+          position="top-right"
+          duration={5000}
+          closeButton={true}
+          richColors={true}
+          theme="system"
+        />
       </body>
     </html>
   );
