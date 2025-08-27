@@ -21,13 +21,13 @@ interface Props {
   params: Promise<{ seasonId: string; teamId: string }>;
 }
 
+const startAt = 9;
+const endAt = 18;
+const day = ['월', '화', '수', '목', '금'];
+
 //import Schedule from ''@/app/team/_component/schedule/schedule;
 
 export default function OtherTeamPage(props: Props) {
-  const startAt = 9;
-  const endAt = 18;
-  const day = ['월', '화', '수', '목', '금'];
-
   const { seasonId, teamId } = use(props.params);
 
   const { user } = useUserStore();

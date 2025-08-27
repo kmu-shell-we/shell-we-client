@@ -25,11 +25,11 @@ interface Props {
   params: Promise<{ seasonId: string }>;
 }
 
-export default function TeamPage(props: Props) {
-  const startAt = 9;
-  const endAt = 18;
-  const day = ['월', '화', '수', '목', '금'];
+const startAt = 9;
+const endAt = 18;
+const day = ['월', '화', '수', '목', '금'];
 
+export default function TeamPage(props: Props) {
   const { seasonId } = use(props.params);
 
   const { user } = useUserStore();
