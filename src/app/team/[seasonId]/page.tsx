@@ -10,8 +10,8 @@ import Profile from '@/app/team/_component/profile';
 import ScheduleUploadModal from '@/app/team/_component/schedule-upload-modal';
 
 import ItemMenu from '@/components/layout/item-menu';
+import LoadingScreen from '@/components/ui/loading-screen';
 import RoundedBadge from '@/components/ui/rounded-badge';
-import Spinner from '@/components/ui/spinner';
 
 import Api from '@/api';
 import { TeamResponse } from '@/api/dto/team';
@@ -57,9 +57,7 @@ export default function TeamPage(props: Props) {
     <div className="flex flex-col gap-y-6 bg-white px-6">
       <ItemMenu />
       {isProcessing ? (
-        <div className="flex h-[calc(100dvh-56px-56px-32px)] items-center justify-center pb-32 sm:h-[calc(100dvh-64px-64px-56px)]">
-          <Spinner />
-        </div>
+        <LoadingScreen />
       ) : (
         <>
           <div className="flex justify-center">

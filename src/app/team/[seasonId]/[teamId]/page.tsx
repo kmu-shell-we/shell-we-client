@@ -9,7 +9,7 @@ import { overlay } from 'overlay-kit';
 import Profile from '@/app/team/_component/profile';
 import ScheduleUploadModal from '@/app/team/_component/schedule-upload-modal';
 
-import Spinner from '@/components/ui/spinner';
+import LoadingScreen from '@/components/ui/loading-screen';
 
 import Api from '@/api';
 import { OtherTeamResponse } from '@/api/dto/team';
@@ -54,9 +54,7 @@ export default function OtherTeamPage(props: Props) {
   return (
     <div className="flex flex-col gap-y-6 bg-white px-6">
       {isProcessing ? (
-        <div className="flex h-[calc(100dvh-56px-56px-32px)] items-center justify-center pb-32 sm:h-[calc(100dvh-64px-64px-56px)]">
-          <Spinner />
-        </div>
+        <LoadingScreen />
       ) : (
         <>
           <span className="text-2xl font-semibold">{teamInfo?.name}</span>
