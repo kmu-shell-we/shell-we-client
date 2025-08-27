@@ -1,5 +1,5 @@
 export default class Auth {
   public async login(): Promise<void> {
-    window.location.href = 'http://localhost:8080/api/auth/oauth/wink';
+    window.location.href = process.env['NEXT_PUBLIC_API_URL'] + 'api/auth/oauth/wink';
   }
 }

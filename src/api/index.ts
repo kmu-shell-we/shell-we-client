@@ -15,7 +15,7 @@ export default class Api {
   private readonly request = new ApiRequest();
 
   private readonly domain = {
-    Auth: new Auth(this.request),
+    Auth: new Auth(),
     Item: new Item(this.request),
     Mission: new Mission(this.request),
     Schedule: new Schedule(this.request),
