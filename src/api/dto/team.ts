@@ -16,6 +16,7 @@ export interface OtherTeamResponse {
 export interface SimpleTeamResponse {
   id: string;
   name: string;
+  experience: number;
 }
 
 export interface TeamListResponse {
