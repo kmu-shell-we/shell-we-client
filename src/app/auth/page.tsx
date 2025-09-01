@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { RedirectType, redirect } from 'next/navigation';
 
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 
@@ -15,13 +15,18 @@ export default function Page() {
         <p className="text-2xl font-light text-gray-500">Everything</p>
       </div>
 
-      {/* TODO: OAuth 인증 페이지 구현 예정 */}
-      <Link href="/auth/oauth" className="flex w-full justify-center">
-        <Button className="flex w-full max-w-[320px] items-center justify-center gap-2">
-          시작하기
-          <ArrowRightIcon className="h-4 w-4" />
-        </Button>
-      </Link>
+      <Button
+        className="flex w-full max-w-[320px] items-center justify-center gap-2"
+        onClick={() => {
+          redirect(
+            process.env['NEXT_PUBLIC_API_URL'] + 'api/auth/oauth/wink',
+            RedirectType.replace
+          );
+        }}
+      >
+        시작하기
+        <ArrowRightIcon className="h-4 w-4" />
+      </Button>
     </div>
   );
 }

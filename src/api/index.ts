@@ -1,4 +1,3 @@
-import Auth from '@/api/controller/auth';
 import Item from '@/api/controller/item';
 import Mission from '@/api/controller/mission';
 import Schedule from '@/api/controller/schedule';
@@ -15,7 +14,6 @@ export default class Api {
   private readonly request = new ApiRequest();
 
   private readonly domain = {
-    Auth: new Auth(this.request),
     Item: new Item(this.request),
     Mission: new Mission(this.request),
     Schedule: new Schedule(this.request),
