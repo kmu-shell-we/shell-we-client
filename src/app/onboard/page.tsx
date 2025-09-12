@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { redirect } from 'next/navigation';
+
 import Logo from '@/components/ui/logo';
 
 const ITEM_HEIGHT = 60;
@@ -16,7 +18,7 @@ export default function WaveAnimation() {
     const hideTimer = setTimeout(() => setHideOtherItems(true), 6400);
 
     const redirectTimer = setTimeout(() => {
-      window.location.href = '/auth';
+      redirect('http://localhost:3000/auth');
     }, 7000);
     return () => {
       clearTimeout(textTimer);
