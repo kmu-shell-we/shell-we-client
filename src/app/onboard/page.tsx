@@ -56,22 +56,12 @@ export default function WaveAnimation() {
           {/* 위쪽 페이드 */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 z-10 h-[30px] bg-gradient-to-b from-white to-transparent"
-            style={{
-              top: '0px',
-              left: '-20px',
-              right: '-20px',
-            }}
+            className="-left-5, pointer-events-none absolute inset-x-0 top-0 -right-5 z-10 h-[30px] bg-gradient-to-b from-white to-transparent"
           />
           {/* 아래쪽 페이드 */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 z-10 h-[30px] bg-gradient-to-t from-white to-transparent"
-            style={{
-              bottom: '0px',
-              left: '-20px',
-              right: '-20px',
-            }}
+            className="-left-5, pointer-events-none absolute inset-x-0 -right-5 bottom-0 z-10 h-[30px] bg-gradient-to-t from-white to-transparent"
           />
 
           <ul
