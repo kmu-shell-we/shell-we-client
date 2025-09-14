@@ -1,10 +1,56 @@
 'use client';
 
+import { useEffect } from 'react';
+
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { toast } from 'react-hot-toast';
+
 import Logo from '@/components/ui/logo';
 import Spinner from '@/components/ui/spinner';
 
+import ApiRequest from '@/api/request';
+
+type OAuthCallbackResponse = {
+  token: string;
+};
+
 export default function CallbackPage() {
-  // TODO: WINK OAuth 로그인 후 code 처리 및 사용자 로그인 상태 저장 예정
+  const router = useRouter();
+  const sp = useSearchParams();
+
+  useEffect(() => {
+    const code = sp.get('code');
+    const oauthError = sp.get('error');
+
+    (async () => {
+      try {
+        if (oauthError) {
+          toast.error(`로그인 실패: ${oauthError}`);
+          router.replace('/auth');
+          return;
+        }
+
+        if (!code) {
+          toast.error('로그인 실패: code error');
+          router.replace('/auth');
+          return;
+        }
+
+        const api = new ApiRequest();
+        const { token } = await api.post<OAuthCallbackResponse>('/auth/oauth/wink/callback', {
+          code,
+        });
+
+        await api.setToken(token);
+        router.replace('/home');
+      } catch (e: unknown) {
+        const message = e instanceof Error ? e.message : '로그인 실패';
+        toast.error(message);
+        router.replace('/auth');
+      }
+    })();
+  }, [router, sp]);
 
   return (
     <div className="flex h-[100dvh] w-screen flex-col items-center justify-center gap-4">
