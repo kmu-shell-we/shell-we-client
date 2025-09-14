@@ -14,7 +14,7 @@ export default function Day({ startAt, endAt, counts = {} }: Props) {
   const hours = endAt - startAt;
 
   return (
-    <div className="flex w-full flex-col items-start justify-start">
+    <div className="flex w-full flex-col items-stretch justify-start">
       {Array.from({ length: hours }).map((_, i) => {
         const hour = startAt + i;
         const isLast = i === hours - 1;

@@ -7,5 +7,20 @@ interface Props {
 }
 
 export default function Cell({ count = 0 }: Props) {
-  return <div className={cn('h-full w-full', `bg-purple-${Math.min(9, count)}00`)} />;
+  const n = Math.min(count, 9);
+
+  const colors = [
+    'bg-white',
+    'bg-purple-100',
+    'bg-purple-200',
+    'bg-purple-300',
+    'bg-purple-400',
+    'bg-purple-500',
+    'bg-purple-600',
+    'bg-purple-700',
+    'bg-purple-800',
+    'bg-purple-900',
+  ];
+
+  return <div className={cn('h-full w-full', colors[n])} />;
 }

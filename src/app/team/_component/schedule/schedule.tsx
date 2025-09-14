@@ -1,5 +1,7 @@
 'use client';
 
+import { useMemo } from 'react';
+
 import { CountsDays } from '@/types/schedule';
 
 import Day from '@/app/team/_component/schedule/day';
@@ -11,15 +13,16 @@ type ScheduleProps = {
 };
 
 export default function Schedule({ startAt, endAt, countsDays }: ScheduleProps) {
-  return (
-    <div className="flex rounded-lg outline-1 outline-neutral-500">
-      {countsDays.map((data, dayIndex) => {
-        const [sH, sM] = startAt.split(':').map(Number);
-        const [eH, eM] = endAt.split(':').map(Number);
-        const isLast = dayIndex === countsDays.length - 1;
+  const { startHour, endHour } = useMemo(() => {
+    const [sH, sM] = startAt.split(':').map(Number);
+    const [eH, eM] = endAt.split(':').map(Number);
+    return { startHour: sH, endHour: eM === 0 ? eH : eH + 1 };
+  }, [startAt, endAt]);
 
-        const startHour = sH;
-        const endHour = eM === 0 ? eH : eH + 1;
+  return (
+    <div className="flex rounded-lg outline-1 outline-neutral-300">
+      {countsDays.map((data, dayIndex) => {
+        const isLast = dayIndex === countsDays.length - 1;
 
         return (
           <div key={dayIndex} className="w-full">

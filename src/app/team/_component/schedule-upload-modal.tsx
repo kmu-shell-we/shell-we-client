@@ -7,7 +7,6 @@ import {
   ArrowRightIcon,
   CogIcon,
   DocumentArrowUpIcon,
-  XMarkIcon,
 } from '@heroicons/react/20/solid';
 
 import Modal from '@/components/modal/modal';

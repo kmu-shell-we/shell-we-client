@@ -5,14 +5,16 @@ import { useMemo, useState } from 'react';
 import { CountsDays } from '@/types/schedule';
 import { OneResponse, countsFromMany, countsFromOne } from '@/utils/scheduleCounts';
 import { ClockIcon, PlusIcon } from '@heroicons/react/20/solid';
+import { overlay } from 'overlay-kit';
 
 import Profile from '@/app/team/_component/profile';
+import ScheduleUploadModal from '@/app/team/_component/schedule-upload-modal';
 import Schedule from '@/app/team/_component/schedule/schedule';
 
 import RoundedBadge from '@/components/ui/rounded-badge';
 
 // 데모 데이터
-type Person = { id: string; name: string; avatar?: string; data: OneResponse };
+type Person = { id: string; name: string; avatar: string; data: OneResponse };
 
 const people: Person[] = [
   {
@@ -53,6 +55,10 @@ export default function TeamPage() {
   const endAt = '18:00';
   const day = ['월', '화', '수', '목', '금'];
 
+  const handleOpen = () => {
+    overlay.open(({ isOpen, close }) => <ScheduleUploadModal open={isOpen} onClose={close} />);
+  };
+
   return (
     <div className="flex flex-col gap-y-6 bg-white px-6">
       {/*Todo: 남은 기간 바꾸기*/}
@@ -89,19 +95,20 @@ export default function TeamPage() {
       <div className="flex w-full flex-col gap-y-4">
         <div className="flex justify-between">
           <span className="text-xl font-semibold">시간표</span>
-          <PlusIcon className="h-5 w-5" />
+          <button onClick={handleOpen}>
+            <PlusIcon className="h-5 w-5" />
+          </button>
         </div>
 
         <div className="flex flex-col gap-3">
           <div className="flex flex-row pl-9">
-            {day.map((w, i) => (
-              <span
-                key={i}
-                className="flex-1 justify-start text-center text-xs font-normal text-neutral-600"
-              >
-                {w}
-              </span>
-            ))}
+            <div className="flex flex-1">
+              {day.map((w, i) => (
+                <span key={i} className="flex-1 text-center text-xs font-normal text-neutral-600">
+                  {w}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-row gap-3">
@@ -115,7 +122,14 @@ export default function TeamPage() {
                 );
               })}
             </div>
-            <Schedule startAt={startAt} endAt={endAt} countsDays={countsDays} />
+            <div className="min-w-0 flex-1">
+              <Schedule
+                key={selectedId ?? 'all'}
+                startAt={startAt}
+                endAt={endAt}
+                countsDays={countsDays}
+              />
+            </div>
           </div>
         </div>
       </div>
