@@ -26,7 +26,13 @@ export default function Layout({ children }: LayoutProps) {
         <ClientOverlayProvider>
           {/*<PwaRedirect />*/}
           <main className="pt-8">{children}</main>
-          <Toaster position="top-center" />
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              className: 'font-sans',
+              duration: 5000,
+            }}
+          />
         </ClientOverlayProvider>
       </body>
     </html>

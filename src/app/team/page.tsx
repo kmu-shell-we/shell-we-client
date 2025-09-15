@@ -6,7 +6,6 @@ import { CountsDays } from '@/types/schedule';
 import { OneResponse, countsFromMany, countsFromOne } from '@/utils/scheduleCounts';
 import { ClockIcon, PlusIcon } from '@heroicons/react/20/solid';
 import { overlay } from 'overlay-kit';
-import { map } from 'zod';
 
 import Profile from '@/app/team/_component/profile';
 import ScheduleUploadModal from '@/app/team/_component/schedule-upload-modal';
