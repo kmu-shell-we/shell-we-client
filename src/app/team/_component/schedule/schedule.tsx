@@ -32,7 +32,11 @@ export default function Schedule({ startAt, endAt, countsDays }: ScheduleProps) 
     if (valid) {
       return { startHour: 9, endHour: 18 };
     }
-    return { startHour: sH, endHour: eM === 0 ? eH : eH + 1 };
+    const end = Math.min(24, eM === 0 ? eH : eH + 1);
+    if (end <= sH) {
+      return { startHour: 9, endHour: 18 };
+    }
+    return { startHour: sH, endHour: end };
   }, [startAt, endAt]);
 
   return (
