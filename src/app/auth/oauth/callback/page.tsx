@@ -36,7 +36,7 @@ export default function CallbackPage() {
         }
 
         if (!code) {
-          toast.error('로그인 실패: code error');
+          toast.error('로그인 실패: 유효하지 않은 인증 코드');
           router.replace('/auth');
           return;
         }

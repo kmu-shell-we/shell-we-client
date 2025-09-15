@@ -40,8 +40,8 @@ export function countsFromOne(res: OneResponse, dayCount = 5): CountsDays {
   const outArray: CountsDays = new Array(dayCount).fill(undefined);
   for (const day of res) {
     const index = DAY_INDEX[day.dayOfWeek];
-    if (!outArray[index]) outArray[index] = {};
-    const bucket = outArray[index];
+    if (index >= dayCount) continue;
+    const bucket = (outArray[index] ??= {});
     for (const lec of day.lecture) fill(bucket, lec.startAt, lec.endAt);
   }
   return outArray;
@@ -52,8 +52,8 @@ export function countsFromMany(resps: ManyResponse, dayCount = 5): CountsDays {
   for (const res of resps) {
     for (const day of res) {
       const index = DAY_INDEX[day.dayOfWeek];
-      if (!outArray[index]) outArray[index] = {};
-      const bucket = outArray[index];
+      if (index >= dayCount) continue;
+      const bucket = (outArray[index] ??= {});
       for (const lec of day.lecture) fill(bucket, lec.startAt, lec.endAt);
     }
   }
