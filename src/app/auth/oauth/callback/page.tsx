@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -18,8 +18,12 @@ type OAuthCallbackResponse = {
 export default function CallbackPage() {
   const router = useRouter();
   const sp = useSearchParams();
+  const once = useRef(false);
 
   useEffect(() => {
+    if (once.current) return;
+    once.current = true;
+
     const code = sp.get('code');
     const oauthError = sp.get('error');
 
