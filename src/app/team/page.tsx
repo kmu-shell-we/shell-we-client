@@ -6,6 +6,7 @@ import { CountsDays } from '@/types/schedule';
 import { OneResponse, countsFromMany, countsFromOne } from '@/utils/scheduleCounts';
 import { ClockIcon, PlusIcon } from '@heroicons/react/20/solid';
 import { overlay } from 'overlay-kit';
+import { map } from 'zod';
 
 import Profile from '@/app/team/_component/profile';
 import ScheduleUploadModal from '@/app/team/_component/schedule-upload-modal';
@@ -113,14 +114,20 @@ export default function TeamPage() {
 
           <div className="flex flex-row gap-3">
             <div className="flex w-5 flex-col">
-              {Array.from({ length: 18 - 9 }).map((_, i) => {
-                const h = 9 + i;
-                return (
-                  <span key={i} className="h-10 text-right text-xs font-normal text-neutral-600">
-                    {String(h).padStart(2, '0')}
-                  </span>
-                );
-              })}
+              {(() => {
+                const [sH] = startAt.split(':').map(Number);
+                const [eH, eM] = endAt.split(':').map(Number);
+                const endHour = eM === 0 ? eH : eH + 1;
+                const len = Math.max(0, endHour - sH);
+                return Array.from({ length: len }).map((_, i) => {
+                  const h = sH + i;
+                  return (
+                    <span key={i} className="h-10 text-right text-xs font-normal text-neutral-600">
+                      {String(h).padStart(2, '0')}
+                    </span>
+                  );
+                });
+              })()}
             </div>
             <div className="min-w-0 flex-1">
               <Schedule
