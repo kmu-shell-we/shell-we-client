@@ -15,9 +15,7 @@ export default function Header() {
       <Link href="/">
         <Logo />
       </Link>
-      {user && (
-        <Avatar src={user.profileUrl ?? ''} alt={user.name} fallback={user.name?.charAt(0)} />
-      )}
+      {user && <Avatar src={user.avatar ?? ''} alt={user.name} fallback={user.name?.charAt(0)} />}
     </header>
   );
 }

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 
-import { Toaster } from 'sonner';
+import { Toaster } from 'react-hot-toast';
 
 import ClientOverlayProvider from '@/app/provider/overlay-provider';
 
@@ -26,16 +26,14 @@ export default function Layout({ children }: LayoutProps) {
         <ClientOverlayProvider>
           {/*<PwaRedirect />*/}
           <main className="pt-8">{children}</main>
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              className: 'font-sans',
+              duration: 5000,
+            }}
+          />
         </ClientOverlayProvider>
-
-        <Toaster
-          className="font-sans"
-          position="top-right"
-          duration={5000}
-          closeButton={true}
-          richColors={true}
-          theme="system"
-        />
       </body>
     </html>
   );

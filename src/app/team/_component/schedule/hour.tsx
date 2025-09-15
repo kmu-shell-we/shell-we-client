@@ -14,14 +14,17 @@ export default function Hour({ hour, counts = {} }: HourProps) {
   const time1 = `${h}:00`;
   const time2 = `${h}:30`;
 
+  const count1 = Number(counts[time1] ?? 0);
+  const count2 = Number(counts[time2] ?? 0);
+
   return (
     <div className="flex flex-col items-start justify-start">
       <div className="h-5 self-stretch">
-        <Cell count={counts[time1]} />
+        <Cell count={count1} />
       </div>
       <div className="h-0 outline-1 outline-offset-[-0.50px] outline-neutral-300" />
       <div className="h-5 self-stretch">
-        <Cell count={counts[time2]} />
+        <Cell count={count2} />
       </div>
     </div>
   );
